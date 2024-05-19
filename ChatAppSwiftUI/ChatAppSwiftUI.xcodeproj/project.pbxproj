@@ -12,6 +12,9 @@
 		B68FFDAB2BF902C6008E9B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68FFDAA2BF902C6008E9B0B /* Assets.xcassets */; };
 		B68FFDAE2BF902C6008E9B0B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68FFDAD2BF902C6008E9B0B /* Preview Assets.xcassets */; };
 		B68FFDC52BF9086E008E9B0B /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDC42BF9086E008E9B0B /* MainTabBarView.swift */; };
+		B68FFDC82BF99E96008E9B0B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDC72BF99E96008E9B0B /* InboxView.swift */; };
+		B68FFDCB2BF9A87D008E9B0B /* NavigationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */; };
+		B68FFDCD2BF9AABF008E9B0B /* InboxRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDCC2BF9AABF008E9B0B /* InboxRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		B68FFDAA2BF902C6008E9B0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B68FFDAD2BF902C6008E9B0B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B68FFDC42BF9086E008E9B0B /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
+		B68FFDC72BF99E96008E9B0B /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColorModifier.swift; sourceTree = "<group>"; };
+		B68FFDCC2BF9AABF008E9B0B /* InboxRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		B68FFDBA2BF9067D008E9B0B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B68FFDC92BF9A85D008E9B0B /* Modifiers */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 		B68FFDBC2BF90697008E9B0B /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
+				B68FFDC62BF99E7E008E9B0B /* View */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -196,6 +204,23 @@
 				B68FFDC42BF9086E008E9B0B /* MainTabBarView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B68FFDC62BF99E7E008E9B0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B68FFDC72BF99E96008E9B0B /* InboxView.swift */,
+				B68FFDCC2BF9AABF008E9B0B /* InboxRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B68FFDC92BF9A85D008E9B0B /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B68FFDCB2BF9A87D008E9B0B /* NavigationBarColorModifier.swift in Sources */,
 				B68FFDA92BF902C4008E9B0B /* ContentView.swift in Sources */,
+				B68FFDC82BF99E96008E9B0B /* InboxView.swift in Sources */,
 				B68FFDC52BF9086E008E9B0B /* MainTabBarView.swift in Sources */,
+				B68FFDCD2BF9AABF008E9B0B /* InboxRowView.swift in Sources */,
 				B68FFDA72BF902C4008E9B0B /* ChatAppSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
