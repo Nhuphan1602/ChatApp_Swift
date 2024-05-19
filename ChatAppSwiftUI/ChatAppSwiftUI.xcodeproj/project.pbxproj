@@ -15,6 +15,8 @@
 		B68FFDC82BF99E96008E9B0B /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDC72BF99E96008E9B0B /* InboxView.swift */; };
 		B68FFDCB2BF9A87D008E9B0B /* NavigationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */; };
 		B68FFDCD2BF9AABF008E9B0B /* InboxRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDCC2BF9AABF008E9B0B /* InboxRowView.swift */; };
+		B68FFDD02BF9D670008E9B0B /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDCF2BF9D670008E9B0B /* CircularProfileImageView.swift */; };
+		B68FFDD22BFA5CA8008E9B0B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDD12BFA5CA8008E9B0B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		B68FFDC72BF99E96008E9B0B /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColorModifier.swift; sourceTree = "<group>"; };
 		B68FFDCC2BF9AABF008E9B0B /* InboxRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxRowView.swift; sourceTree = "<group>"; };
+		B68FFDCF2BF9D670008E9B0B /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		B68FFDD12BFA5CA8008E9B0B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 		B68FFDB62BF90647008E9B0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B68FFDD12BFA5CA8008E9B0B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 		B68FFDBA2BF9067D008E9B0B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B68FFDCE2BF9D613008E9B0B /* View */,
 				B68FFDC92BF9A85D008E9B0B /* Modifiers */,
 			);
 			path = Components;
@@ -223,6 +229,14 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		B68FFDCE2BF9D613008E9B0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B68FFDCF2BF9D670008E9B0B /* CircularProfileImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,9 +307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B68FFDD02BF9D670008E9B0B /* CircularProfileImageView.swift in Sources */,
 				B68FFDCB2BF9A87D008E9B0B /* NavigationBarColorModifier.swift in Sources */,
 				B68FFDA92BF902C4008E9B0B /* ContentView.swift in Sources */,
 				B68FFDC82BF99E96008E9B0B /* InboxView.swift in Sources */,
+				B68FFDD22BFA5CA8008E9B0B /* User.swift in Sources */,
 				B68FFDC52BF9086E008E9B0B /* MainTabBarView.swift in Sources */,
 				B68FFDCD2BF9AABF008E9B0B /* InboxRowView.swift in Sources */,
 				B68FFDA72BF902C4008E9B0B /* ChatAppSwiftUIApp.swift in Sources */,
