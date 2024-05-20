@@ -30,7 +30,6 @@ struct InboxRowView: View {
             HStack {
                 Text("Yesterday")
                 Image(systemName: "chevron.right")
-                
             }
             .font(.footnote)
             .foregroundColor(.gray)

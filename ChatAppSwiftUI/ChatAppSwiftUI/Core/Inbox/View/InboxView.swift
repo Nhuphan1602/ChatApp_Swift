@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct InboxView: View {
+    @StateObject private var viewModel = InboxViewModel()
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
                 ZStack(alignment: .bottomTrailing) {
                     List {
                         ForEach(0 ..< 5) { _ in
-                            InboxRowView(width: proxy.size.width)
+                            NavigationLink {
+                                ChatView()
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                InboxRowView(width: proxy.size.width)
+                            }
                         }
-                    }
-                    .listStyle(PlainListStyle())
+                    }.listStyle(PlainListStyle())
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        viewModel.showNewMessage.toggle()
+                    }, label: {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(.darkGray))
                             .frame(width: 50, height: 50)
@@ -29,6 +36,9 @@ struct InboxView: View {
                                     .foregroundColor(.white)
                             }
                     })
+                }
+                .fullScreenCover(isPresented: $viewModel.showNewMessage){
+                    NewMessageView()
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
