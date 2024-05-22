@@ -13,7 +13,22 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView {
-                
+                VStack {
+                    ForEach(MessageGroup.MOCK_MESSAGE_GROUP, id: \.self) { group in
+                        Section {
+                            ForEach(group.message) { message in
+                                ChatMessageCell(isFromCurrentUser: Bool.random(), message: message)
+                            }
+                        } header: {
+                            Capsule()
+                                .fill(Color(.systemGray5))
+                                .frame(width: 120, height: 44)
+                                .overlay {
+                                    Text(group.date.chatTimestampString())
+                                }
+                        }
+                    }
+                }
             }
             
             Spacer()
