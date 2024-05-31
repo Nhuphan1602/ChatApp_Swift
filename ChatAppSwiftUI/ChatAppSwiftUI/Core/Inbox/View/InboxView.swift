@@ -53,7 +53,7 @@ struct InboxView: View {
                             Image(systemName: "camera")
                             Image(systemName: "magnifyingglass")
                             NavigationLink(
-                                destination: ProfileView().navigationBarBackButtonHidden(),
+                                destination: SettingsView().navigationBarBackButtonHidden(),
                                 label: {
                                     Image(systemName: "ellipsis")
                                 }
