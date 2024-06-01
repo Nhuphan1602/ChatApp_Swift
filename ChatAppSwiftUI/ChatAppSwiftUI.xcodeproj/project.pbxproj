@@ -15,6 +15,12 @@
 		B68FA51F2C0A1E9F004779E5 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */; };
 		B68FA5232C0A43D2004779E5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5222C0A43D2004779E5 /* SettingsViewModel.swift */; };
 		B68FA5262C0A4ABC004779E5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5252C0A4ABC004779E5 /* WelcomeView.swift */; };
+		B68FA5282C0B0E72004779E5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5272C0B0E72004779E5 /* LoginView.swift */; };
+		B68FA52B2C0B113C004779E5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA52A2C0B113C004779E5 /* LoginViewModel.swift */; };
+		B68FA52D2C0B3575004779E5 /* FloatingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA52C2C0B3575004779E5 /* FloatingField.swift */; };
+		B68FA52F2C0B3632004779E5 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA52E2C0B3632004779E5 /* RegistrationView.swift */; };
+		B68FA5312C0B38DF004779E5 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5302C0B38DF004779E5 /* RegistrationViewModel.swift */; };
+		B68FA5332C0B4844004779E5 /* AuthenticationButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5322C0B4844004779E5 /* AuthenticationButtonModifier.swift */; };
 		B68FFDA72BF902C4008E9B0B /* ChatAppSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDA62BF902C4008E9B0B /* ChatAppSwiftUIApp.swift */; };
 		B68FFDA92BF902C4008E9B0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FFDA82BF902C4008E9B0B /* ContentView.swift */; };
 		B68FFDAB2BF902C6008E9B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68FFDAA2BF902C6008E9B0B /* Assets.xcassets */; };
@@ -43,6 +49,12 @@
 		B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		B68FA5222C0A43D2004779E5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		B68FA5252C0A4ABC004779E5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B68FA5272C0B0E72004779E5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B68FA52A2C0B113C004779E5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B68FA52C2C0B3575004779E5 /* FloatingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingField.swift; sourceTree = "<group>"; };
+		B68FA52E2C0B3632004779E5 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		B68FA5302C0B38DF004779E5 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B68FA5322C0B4844004779E5 /* AuthenticationButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButtonModifier.swift; sourceTree = "<group>"; };
 		B68FFDA32BF902C4008E9B0B /* ChatAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68FFDA62BF902C4008E9B0B /* ChatAppSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppSwiftUIApp.swift; sourceTree = "<group>"; };
 		B68FFDA82BF902C4008E9B0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,8 +114,19 @@
 			isa = PBXGroup;
 			children = (
 				B68FA5252C0A4ABC004779E5 /* WelcomeView.swift */,
+				B68FA5272C0B0E72004779E5 /* LoginView.swift */,
+				B68FA52E2C0B3632004779E5 /* RegistrationView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B68FA5292C0B1122004779E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B68FA52A2C0B113C004779E5 /* LoginViewModel.swift */,
+				B68FA5302C0B38DF004779E5 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B68FFD9A2BF902C4008E9B0B = {
@@ -198,6 +221,7 @@
 		B68FFDB92BF90671008E9B0B /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B68FA5292C0B1122004779E5 /* ViewModel */,
 				B68FA5242C0A4A55004779E5 /* View */,
 			);
 			path = Authentication;
@@ -299,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				B68FFDCA2BF9A87D008E9B0B /* NavigationBarColorModifier.swift */,
+				B68FA5322C0B4844004779E5 /* AuthenticationButtonModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -307,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				B68FFDCF2BF9D670008E9B0B /* CircularProfileImageView.swift */,
+				B68FA52C2C0B3575004779E5 /* FloatingField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,14 +464,20 @@
 				B68FFDD52BFB4D1A008E9B0B /* NewMessageView.swift in Sources */,
 				B611C7972BFE04EB00478D14 /* Message.swift in Sources */,
 				B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */,
+				B68FA5282C0B0E72004779E5 /* LoginView.swift in Sources */,
 				B611C7952BFE00C100478D14 /* Date.swift in Sources */,
 				B68FFDDA2BFB9448008E9B0B /* ContactView.swift in Sources */,
 				B68FFDD02BF9D670008E9B0B /* CircularProfileImageView.swift in Sources */,
 				B68FFDCB2BF9A87D008E9B0B /* NavigationBarColorModifier.swift in Sources */,
 				B68FA5262C0A4ABC004779E5 /* WelcomeView.swift in Sources */,
+				B68FA52F2C0B3632004779E5 /* RegistrationView.swift in Sources */,
 				B611C7902BFDB45E00478D14 /* ChatMessageCell.swift in Sources */,
+				B68FA52B2C0B113C004779E5 /* LoginViewModel.swift in Sources */,
 				B68FFDDE2BFB9B36008E9B0B /* ChatView.swift in Sources */,
 				B6CBDCB22BFE3132005F3F80 /* ProfileView.swift in Sources */,
+				B68FA5332C0B4844004779E5 /* AuthenticationButtonModifier.swift in Sources */,
+				B68FA5312C0B38DF004779E5 /* RegistrationViewModel.swift in Sources */,
+				B68FA52D2C0B3575004779E5 /* FloatingField.swift in Sources */,
 				B68FFDA92BF902C4008E9B0B /* ContentView.swift in Sources */,
 				B68FFDC82BF99E96008E9B0B /* InboxView.swift in Sources */,
 				B68FFDD22BFA5CA8008E9B0B /* User.swift in Sources */,
