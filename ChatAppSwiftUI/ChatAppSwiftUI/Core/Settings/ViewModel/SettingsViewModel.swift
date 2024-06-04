@@ -9,4 +9,8 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     @Published var tabbarVisibility: Visibility = .hidden
+    
+    func logout() {
+        AuthService.shared.logout()
+    }
 }

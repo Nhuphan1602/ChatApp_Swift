@@ -19,7 +19,7 @@ struct RegistrationView: View {
             FloatingField(title: "Phone number", placeholder: "", text: $viewModel.phoneNumber)
             FloatingField(title: "Password", placeholder: "", text: $viewModel.password)
             Button(action: {
-                
+                Task { try await viewModel.createUser() }
             }, label: {
                 Text("Sign up")
                     .authenticationButtonModifier()

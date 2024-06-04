@@ -38,22 +38,29 @@ struct SettingsView: View {
                 
                 VStack(spacing: 32) {
                     ForEach(SettingsOption.allCases) { option in
-                        HStack(spacing: 24) {
-                            Image(systemName: option.imageName)
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                                .foregroundStyle(.gray)
-                            VStack(alignment: .leading) {
-                                Text(option.title)
-                                    .font(.headline)
-                                    .fontWeight(.semibold)
-                                if option.subtitle != "" {
-                                    Text(option.subtitle)
-                                        .font(.footnote)
-                                        .foregroundStyle(.gray)
-                                }
+                        Button {
+                            if option == .logout {
+                                viewModel.logout()
                             }
-                            Spacer()
+                        } label: {
+                            HStack(spacing: 24) {
+                                Image(systemName: option.imageName)
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .foregroundStyle(.gray)
+                                VStack(alignment: .leading) {
+                                    Text(option.title)
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.black)
+                                    if option.subtitle != "" {
+                                        Text(option.subtitle)
+                                            .font(.footnote)
+                                            .foregroundStyle(.gray)
+                                    }
+                                }
+                                Spacer()
+                            }
                         }
                     }
                 }

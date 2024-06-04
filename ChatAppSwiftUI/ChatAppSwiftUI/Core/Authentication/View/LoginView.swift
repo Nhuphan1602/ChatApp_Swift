@@ -25,7 +25,7 @@ struct LoginView: View {
                     .padding(.top)
                     .padding(.trailing, 20)
                 Button(action: {
-
+                    Task { try await viewModel.login() }
                 }, label: {
                     Text("Login")
                         .authenticationButtonModifier()
