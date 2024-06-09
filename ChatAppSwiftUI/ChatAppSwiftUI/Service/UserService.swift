@@ -29,4 +29,11 @@ class UserService {
             print("Failed to fetch user data \(error.localizedDescription)")
         }
     }
+    
+    @MainActor
+    func updateUserProfileImage(withImageURL imageURL: String) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        try await Firestore.firestore().collection("users").document(uid).updateData(["profileImageURL": imageURL])
+        self.currentUser?.profileImageURL = imageURL
+    }
 }

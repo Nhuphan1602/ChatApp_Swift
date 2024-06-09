@@ -11,6 +11,8 @@
 		B611C7922BFDDCEA00478D14 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B611C7912BFDDCEA00478D14 /* ChatBubble.swift */; };
 		B611C7952BFE00C100478D14 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B611C7942BFE00C100478D14 /* Date.swift */; };
 		B611C7972BFE04EB00478D14 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B611C7962BFE04EB00478D14 /* Message.swift */; };
+		B63D66552C14A7B100CC9FB4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B63D66542C14A7B100CC9FB4 /* Kingfisher */; };
+		B63D66572C14BFA800CC9FB4 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */; };
 		B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51C2C0A15CE004779E5 /* SettingsView.swift */; };
 		B68FA51F2C0A1E9F004779E5 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */; };
 		B68FA5232C0A43D2004779E5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA5222C0A43D2004779E5 /* SettingsViewModel.swift */; };
@@ -55,6 +57,7 @@
 		B611C7912BFDDCEA00478D14 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		B611C7942BFE00C100478D14 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B611C7962BFE04EB00478D14 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		B68FA51C2C0A15CE004779E5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
 		B68FA5222C0A43D2004779E5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 				B68FA53E2C0CE997004779E5 /* FirebaseStorage in Frameworks */,
 				B68FA53A2C0CE997004779E5 /* FirebaseFirestore in Frameworks */,
 				B68FA53C2C0CE997004779E5 /* FirebaseFirestoreSwift in Frameworks */,
+				B63D66552C14A7B100CC9FB4 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +248,7 @@
 			children = (
 				B68FA53F2C0EEA9D004779E5 /* AuthService.swift */,
 				B68FA54B2C0F3100004779E5 /* UserService.swift */,
+				B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				B68FA5392C0CE997004779E5 /* FirebaseFirestore */,
 				B68FA53B2C0CE997004779E5 /* FirebaseFirestoreSwift */,
 				B68FA53D2C0CE997004779E5 /* FirebaseStorage */,
+				B63D66542C14A7B100CC9FB4 /* Kingfisher */,
 			);
 			productName = ChatAppSwiftUI;
 			productReference = B68FFDA32BF902C4008E9B0B /* ChatAppSwiftUI.app */;
@@ -482,6 +488,7 @@
 			mainGroup = B68FFD9A2BF902C4008E9B0B;
 			packageReferences = (
 				B68FA5362C0CE996004779E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B63D66532C14A7B000CC9FB4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B68FFDA42BF902C4008E9B0B /* Products */;
 			projectDirPath = "";
@@ -517,6 +524,7 @@
 				B611C7972BFE04EB00478D14 /* Message.swift in Sources */,
 				B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */,
 				B68FA54C2C0F3100004779E5 /* UserService.swift in Sources */,
+				B63D66572C14BFA800CC9FB4 /* ImageUploader.swift in Sources */,
 				B68FA5282C0B0E72004779E5 /* LoginView.swift in Sources */,
 				B611C7952BFE00C100478D14 /* Date.swift in Sources */,
 				B68FA5482C0F14DD004779E5 /* RootView.swift in Sources */,
@@ -751,6 +759,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B63D66532C14A7B000CC9FB4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 		B68FA5362C0CE996004779E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -762,6 +778,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B63D66542C14A7B100CC9FB4 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B63D66532C14A7B000CC9FB4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		B68FA5372C0CE997004779E5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B68FA5362C0CE996004779E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -6,26 +6,40 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ProfileViewModel()
     var body: some View {
         VStack {
-            ZStack(alignment: .bottomTrailing) {
-                CircularProfileImageView(size: .xxlarge, user: User.MOCK_USER)
-                Circle()
-                    .frame(width: 40, height: 40)
-                    .foregroundStyle(Color(.darkGray))
-                    .overlay {
-                        Image(systemName: "camera.fill")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                            .foregroundColor(.white)
+            Button {
+                viewModel.showPhotoPicker.toggle()
+            } label: {
+                ZStack(alignment: .bottomTrailing) {
+                    ZStack {
+                        CircularProfileImageView(size: .xxlarge, user: User.MOCK_USER)
+                        if let profileImage = viewModel.profileImage {
+                            profileImage
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .scaledToFill()
+                                .clipShape(Circle())
+                        }
                     }
+                    Circle()
+                        .frame(width: 40, height: 40)
+                        .foregroundStyle(Color(.darkGray))
+                        .overlay {
+                            Image(systemName: "camera.fill")
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                                .foregroundColor(.white)
+                        }
+                }
+                .padding(.vertical)
             }
-            .padding(.vertical)
-            
+
             VStack(spacing: 32) {
                 OptionView(imageName: "person.fill",
                            title: "Name",
@@ -60,6 +74,7 @@ struct ProfileView: View {
                 .fontWeight(.semibold)
             }
         }
+        .photosPicker(isPresented: $viewModel.showPhotoPicker, selection: $viewModel.selectedImage)
     }
 }
 

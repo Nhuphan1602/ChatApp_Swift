@@ -19,5 +19,5 @@ extension User {
     static let MOCK_USER = User(fullName: "Wanda Maximoff",
                                 email: "wanda.maximoff@gmail.com",
                                 phoneNumber: "01234567",
-                                profileImageURL: "elizabeth")
+                                profileImageURL: nil)
 }

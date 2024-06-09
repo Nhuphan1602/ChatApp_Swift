@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 enum ProfileImageSize {
     case xxsmall
@@ -47,7 +48,7 @@ struct CircularProfileImageView: View {
     
     var body: some View {
         if let profileImageURL = user?.profileImageURL {
-            Image(profileImageURL)
+            KFImage(URL(string: profileImageURL))
                 .resizable()
                 .frame(width: size.dimension, height: size.dimension)
                 .scaledToFill()
