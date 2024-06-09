@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewMessageView: View {
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = NewMessageViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -24,11 +26,11 @@ struct NewMessageView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.footnote)
                     .fontWeight(.semibold)
-                ForEach(0 ..< 5) { _ in
+                ForEach(viewModel.users) { user in
                     HStack {
-                        CircularProfileImageView(size: .small, user: User.MOCK_USER)
+                        CircularProfileImageView(size: .small, user: user)
                         VStack(alignment: .leading) {
-                            Text(User.MOCK_USER.fullName)
+                            Text(user.fullName)
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                             Text("Hi there! I am using WhatsApp")

@@ -53,7 +53,9 @@ struct InboxView: View {
                             Image(systemName: "camera")
                             Image(systemName: "magnifyingglass")
                             NavigationLink(
-                                destination: SettingsView().navigationBarBackButtonHidden(),
+                                destination: 
+                                    SettingsView(user: viewModel.currentUser)
+                                        .navigationBarBackButtonHidden(),
                                 label: {
                                     Image(systemName: "ellipsis")
                                 }

@@ -10,17 +10,23 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = SettingsViewModel()
+    private var user: User?
+    
+    init(user: User?) {
+        self.user = user
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
                 NavigationLink {
-                    ProfileView()
+                    ProfileView(user: user)
                         .navigationBarBackButtonHidden()
                 } label: {
                     HStack(spacing: 12) {
-                        CircularProfileImageView(size: .large, user: User.MOCK_USER)
+                        CircularProfileImageView(size: .large, user: user)
                         VStack(alignment: .leading) {
-                            Text(User.MOCK_USER.fullName)
+                            Text(user?.fullName ?? "")
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.black)
@@ -94,5 +100,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(user: User.MOCK_USER)
 }

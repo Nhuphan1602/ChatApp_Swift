@@ -11,6 +11,12 @@ import PhotosUI
 struct ProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ProfileViewModel()
+    private var user: User?
+    
+    init(user: User?) {
+        self.user = user
+    }
+    
     var body: some View {
         VStack {
             Button {
@@ -18,7 +24,7 @@ struct ProfileView: View {
             } label: {
                 ZStack(alignment: .bottomTrailing) {
                     ZStack {
-                        CircularProfileImageView(size: .xxlarge, user: User.MOCK_USER)
+                        CircularProfileImageView(size: .xxlarge, user: user)
                         if let profileImage = viewModel.profileImage {
                             profileImage
                                 .resizable()
@@ -43,7 +49,7 @@ struct ProfileView: View {
             VStack(spacing: 32) {
                 OptionView(imageName: "person.fill",
                            title: "Name",
-                           subtitle: User.MOCK_USER.fullName,
+                           subtitle: user?.fullName ?? "",
                            isEditable: true,
                            secondSubtitle: "This is not your username or pin. This name will be visible on WhatsApp contact")
                 OptionView(imageName: "exclamationmark.circle",
@@ -53,7 +59,7 @@ struct ProfileView: View {
                            secondSubtitle: "")
                 OptionView(imageName: "phone.fill",
                            title: "Phone",
-                           subtitle: User.MOCK_USER.phoneNumber)
+                           subtitle: user?.phoneNumber ?? "")
             }
             Spacer()
         }
@@ -79,7 +85,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(user: User.MOCK_USER)
 }
 
 struct OptionView: View {

@@ -6,8 +6,21 @@
 //
 
 import Foundation
+import Combine
 
 class InboxViewModel: ObservableObject {
     @Published var showNewMessage: Bool = false
+    @Published var currentUser: User?
+    private var cancellables = Set<AnyCancellable>()
     
+    init() {
+        setupSubscriptions()
+    }
+    
+    private func setupSubscriptions() {
+        UserService.shared.$currentUser.sink { [weak self] currentUser in
+            self?.currentUser = currentUser
+        }
+        .store(in: &cancellables)
+    }
 }
