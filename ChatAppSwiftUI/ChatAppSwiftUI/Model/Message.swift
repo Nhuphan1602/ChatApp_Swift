@@ -19,7 +19,7 @@ struct Message: Identifiable, Hashable, Codable {
     let isImage: Bool
     let isAudio: Bool
     let isVideo: Bool
-    let user: User?
+    var user: User?
     var id: String {
         return messageId ?? UUID().uuidString
     }
@@ -33,13 +33,13 @@ struct Message: Identifiable, Hashable, Codable {
 
 struct MessageGroup: Identifiable, Hashable {
     var id = UUID().uuidString
-    var message: [Message]
+    var messages: [Message]
     let date: Date
 }
 
 extension MessageGroup {
     static let MOCK_MESSAGE_GROUP = [MessageGroup(
-        message: [
+        messages: [
             Message(fromId: "", toId: "", messageText: "Hello Mr Nhu", timeStamp: Timestamp(), isImage: false, isAudio: false, isVideo: false, user: nil),
             Message(fromId: "", toId: "", messageText: "Hello Mr Nhu", timeStamp: Timestamp(), isImage: false, isAudio: false, isVideo: false, user: nil),
             Message(fromId: "", toId: "", messageText: "Hello Mr Nhu", timeStamp: Timestamp(), isImage: false, isAudio: false, isVideo: false, user: nil),

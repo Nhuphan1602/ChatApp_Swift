@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatMessageCell: View {
     let isFromCurrentUser: Bool
     let message: Message
+    
     var body: some View {
         if isFromCurrentUser {
             VStack(alignment: .leading, spacing: -15) {
@@ -53,5 +54,5 @@ struct ChatMessageCell: View {
 }
 
 #Preview {
-    ChatMessageCell(isFromCurrentUser: Bool.random(), message: MessageGroup.MOCK_MESSAGE_GROUP.first!.message.first!)
+    ChatMessageCell(isFromCurrentUser: Bool.random(), message: MessageGroup.MOCK_MESSAGE_GROUP.first!.messages.first!)
 }

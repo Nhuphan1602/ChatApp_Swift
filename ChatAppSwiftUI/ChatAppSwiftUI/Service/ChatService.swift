@@ -27,4 +27,19 @@ class ChatService {
         currentUserRef.setData(messageData)
         chatPartnerRef.document(documentId).setData(messageData)
     }
+    
+    static func observeMessages(chatPartner: User, completionHandler: @escaping([Message]) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        let query = Firestore.firestore()
+            .collection("messages").document(currentUid)
+            .collection(chatPartner.id).order(by: "timeStamp", descending: false)
+        query.addSnapshotListener { snapshot, _ in
+            guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+            var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
+            for (index, message) in messages.enumerated() where !message.isFromCurrentUser {
+                messages[index].user = chatPartner
+            }
+            completionHandler(messages)
+        }
+    }
 }

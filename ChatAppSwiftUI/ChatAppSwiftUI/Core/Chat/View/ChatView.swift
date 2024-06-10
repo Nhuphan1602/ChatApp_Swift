@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ChatView: View {
-    @StateObject private var viewModel = ChatViewModel()
+    @StateObject private var viewModel: ChatViewModel
     @Environment(\.dismiss) private var dismiss
     private var selectedUser: User
     
     init(selectedUser: User) {
         self.selectedUser = selectedUser
+        self._viewModel = StateObject(wrappedValue: ChatViewModel(chatPartner: selectedUser))
     }
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack {
-                    ForEach(MessageGroup.MOCK_MESSAGE_GROUP, id: \.self) { group in
+                    ForEach(viewModel.messageGroups, id: \.self) { group in
                         Section {
-                            ForEach(group.message) { message in
-                                ChatMessageCell(isFromCurrentUser: Bool.random(), message: message)
+                            ForEach(group.messages) { message in
+                                ChatMessageCell(isFromCurrentUser: message.isFromCurrentUser, message: message)
                             }
                         } header: {
                             Capsule()
