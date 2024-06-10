@@ -11,6 +11,7 @@ import Combine
 class InboxViewModel: ObservableObject {
     @Published var showNewMessage: Bool = false
     @Published var currentUser: User?
+    @Published var showChat: Bool = false
     private var cancellables = Set<AnyCancellable>()
     
     init() {

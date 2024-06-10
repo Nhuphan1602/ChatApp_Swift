@@ -10,6 +10,7 @@ import SwiftUI
 struct NewMessageView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = NewMessageViewModel()
+    @Binding var selectedUser: User?
     
     var body: some View {
         NavigationStack {
@@ -38,7 +39,12 @@ struct NewMessageView: View {
                                 .foregroundColor(.gray)
                         }
                         Spacer()
-                    }.padding(.bottom, 20)
+                    }
+                    .padding(.bottom, 20)
+                    .onTapGesture {
+                        selectedUser = user
+                        dismiss()
+                    }
                 }
             }
             .padding(.horizontal)
@@ -71,4 +77,8 @@ struct NewMessageView: View {
             }
         }
     }
+}
+
+#Preview {
+    NewMessageView(selectedUser: .constant(User.MOCK_USER))
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InboxView: View {
     @StateObject private var viewModel = InboxViewModel()
+    @State private var selectedUser: User?
+    
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
@@ -16,7 +18,7 @@ struct InboxView: View {
                     List {
                         ForEach(0 ..< 5) { _ in
                             NavigationLink {
-                                ChatView()
+                                ChatView(selectedUser: User.MOCK_USER)
                                     .navigationBarBackButtonHidden()
                             } label: {
                                 InboxRowView(width: proxy.size.width)
@@ -38,8 +40,17 @@ struct InboxView: View {
                     })
                 }
                 .fullScreenCover(isPresented: $viewModel.showNewMessage){
-                    NewMessageView()
+                    NewMessageView(selectedUser: $selectedUser)
                 }
+                .onChange(of: selectedUser, {
+                    viewModel.showChat = selectedUser != nil
+                })
+                .navigationDestination(isPresented: $viewModel.showChat, destination: {
+                    if let selectedUser = selectedUser {
+                        ChatView(selectedUser: selectedUser)
+                            .navigationBarBackButtonHidden()
+                    }
+                })
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Text("WhatsApp")

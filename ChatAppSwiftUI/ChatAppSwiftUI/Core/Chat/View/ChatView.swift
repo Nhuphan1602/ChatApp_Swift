@@ -10,6 +10,12 @@ import SwiftUI
 struct ChatView: View {
     @StateObject private var viewModel = ChatViewModel()
     @Environment(\.dismiss) private var dismiss
+    private var selectedUser: User
+    
+    init(selectedUser: User) {
+        self.selectedUser = selectedUser
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -51,7 +57,7 @@ struct ChatView: View {
                     .foregroundColor(.gray)
                 }
                 Button(action: {
-                    
+                    viewModel.sendMessage(chatPartner: selectedUser, isImage: false, isVideo: false, isAudio: false)
                 }, label: {
                     Image(systemName: viewModel.messageText == "" ? "mic.circle.fill" : "play.circle.fill")
                         .resizable()
@@ -80,8 +86,8 @@ struct ChatView: View {
                     }, label: {
                         Image(systemName: "arrow.backward")
                     })
-                    CircularProfileImageView(size: .xsmall, user: User.MOCK_USER)
-                    Text(User.MOCK_USER.fullName)
+                    CircularProfileImageView(size: .xsmall, user: selectedUser)
+                    Text(selectedUser.fullName)
                         .font(.subheadline)
                         .fontWeight(.semibold)
                 }
@@ -102,5 +108,5 @@ struct ChatView: View {
 }
 
 #Preview {
-    ChatView()
+    ChatView(selectedUser: User.MOCK_USER)
 }
