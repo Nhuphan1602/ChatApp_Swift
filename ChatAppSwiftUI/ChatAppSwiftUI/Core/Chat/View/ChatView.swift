@@ -20,19 +20,28 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView {
-                VStack {
-                    ForEach(viewModel.messageGroups, id: \.self) { group in
-                        Section {
-                            ForEach(group.messages) { message in
-                                ChatMessageCell(isFromCurrentUser: message.isFromCurrentUser, message: message)
-                            }
-                        } header: {
-                            Capsule()
-                                .fill(Color(.systemGray5))
-                                .frame(width: 120, height: 44)
-                                .overlay {
-                                    Text(group.date.chatTimestampString())
+                ScrollViewReader { scrollViewProxy in
+                    VStack {
+                        ForEach(viewModel.messageGroups, id: \.self) { group in
+                            Section {
+                                ForEach(group.messages) { message in
+                                    ChatMessageCell(isFromCurrentUser: message.isFromCurrentUser, message: message)
                                 }
+                            } header: {
+                                Capsule()
+                                    .fill(Color(.systemGray5))
+                                    .frame(width: 120, height: 44)
+                                    .overlay {
+                                        Text(group.date.chatTimestampString())
+                                    }
+                            }
+                        }
+                        HStack { Spacer() }
+                            .id("bottom")
+                    }
+                    .onReceive(viewModel.$count) { _ in
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            scrollViewProxy.scrollTo("bottom", anchor: .top)
                         }
                     }
                 }

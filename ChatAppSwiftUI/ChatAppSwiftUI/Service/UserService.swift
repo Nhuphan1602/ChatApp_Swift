@@ -36,6 +36,13 @@ class UserService {
         return snapshot.documents.compactMap({ try? $0.data(as: User.self) })
     }
     
+    func fetchUser(withUid uid: String, completion: @escaping(User) -> ()) {
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+            guard let user = try? snapshot?.data(as: User.self) else { return }
+            completion(user)
+        }
+    }
+    
     @MainActor
     func updateUserProfileImage(withImageURL imageURL: String) async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }

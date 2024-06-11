@@ -9,18 +9,21 @@ import SwiftUI
 
 struct InboxRowView: View {
     private var width: CGFloat
-    init(width: CGFloat) {
+    private var message: Message
+    
+    init(width: CGFloat, message: Message) {
         self.width = width
+        self.message = message
     }
     
     var body: some View {
         HStack(spacing: 12) {
-            CircularProfileImageView(size: .medium, user: User.MOCK_USER)
+            CircularProfileImageView(size: .medium, user: message.user)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Wanna Maximoff")
+                Text(message.user?.fullName ?? "")
                     .fontWeight(.semibold)
-                Text("Sent video")
+                Text(message.messageText)
                     .foregroundStyle(.gray)
                     .lineLimit(2)
                     .frame(maxWidth: width - 100, alignment: .leading)
@@ -35,8 +38,4 @@ struct InboxRowView: View {
             .foregroundColor(.gray)
         }.frame(height: 72)
     }
-}
-
-#Preview {
-    InboxRowView(width: 300)
 }

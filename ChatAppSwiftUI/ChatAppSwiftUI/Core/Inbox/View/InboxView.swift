@@ -16,12 +16,12 @@ struct InboxView: View {
             GeometryReader { proxy in
                 ZStack(alignment: .bottomTrailing) {
                     List {
-                        ForEach(0 ..< 5) { _ in
+                        ForEach(viewModel.latestMessages) { message in
                             NavigationLink {
                                 ChatView(selectedUser: User.MOCK_USER)
                                     .navigationBarBackButtonHidden()
                             } label: {
-                                InboxRowView(width: proxy.size.width)
+                                InboxRowView(width: proxy.size.width, message: message)
                             }
                         }
                     }.listStyle(PlainListStyle())

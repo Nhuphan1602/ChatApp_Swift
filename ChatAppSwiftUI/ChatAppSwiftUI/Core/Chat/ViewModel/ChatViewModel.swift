@@ -6,25 +6,37 @@
 //
 
 import SwiftUI
+import Combine
 
 class ChatViewModel: ObservableObject {
     @Published var messageText: String = ""
     @Published var tabbarVisibility: Visibility = .hidden
     @Published var chatPartner: User
     @Published var messageGroups = [MessageGroup]()
+    @Published var count: Int = 0
+    private var service = ChatService()
+    private var cancellables = Set<AnyCancellable>()
     
     init(chatPartner: User) {
         self.chatPartner = chatPartner
         observeMessages()
+        setupSubscribers()
+    }
+    
+    private func setupSubscribers() {
+        service.$count.sink { [weak self] count in
+            self?.count = count
+        }
+        .store(in: &cancellables)
     }
     
     func sendMessage(chatPartner: User, isImage: Bool, isVideo: Bool, isAudio: Bool) {
-        ChatService.sendMessage(messageText, chatPartner: chatPartner, isImage: isImage, isVideo: isVideo, isAudio: isAudio)
+        service.sendMessage(messageText, chatPartner: chatPartner, isImage: isImage, isVideo: isVideo, isAudio: isAudio)
         messageText = ""
     }
     
     func observeMessages() {
-        ChatService.observeMessages(chatPartner: chatPartner) { messages in
+        service.observeMessages(chatPartner: chatPartner) { messages in
 //            self.messageGroups.append(MessageGroup(message: messages, date: Date()))
             let groupedMessages = self.groupMessageByDate(messages: messages)
             for group in groupedMessages {
