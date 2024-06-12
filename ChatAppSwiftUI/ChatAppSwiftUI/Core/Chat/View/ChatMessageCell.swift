@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import AVKit
 
 struct ChatMessageCell: View {
     let isFromCurrentUser: Bool
@@ -14,7 +15,7 @@ struct ChatMessageCell: View {
     
     var body: some View {
         if isFromCurrentUser {
-            VStack(alignment: .leading, spacing: message.isImage ? 0 : -15) {
+            VStack(alignment: .leading, spacing: message.isImage || message.isVideo ? 0 : -15) {
                 if message.isImage {
                     KFImage(URL(string: message.messageText))
                         .resizable()
@@ -23,6 +24,14 @@ struct ChatMessageCell: View {
                         .padding(.horizontal)
                         .padding(.top, 6)
                         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                } else if message.isVideo {
+                    if let videoUrl = URL(string: message.messageText) {
+                        VideoPlayer(player: AVPlayer(url: videoUrl))
+                            .frame(width: 150, height: 150)
+                            .padding(.horizontal)
+                            .padding(.top, 6)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                    }
                 } else {
                     Text(message.messageText)
                 }
@@ -30,17 +39,20 @@ struct ChatMessageCell: View {
                     if message.isImage {
                         Spacer()
                             .frame(width: 99)
+                    } else if message.isVideo {
+                        Spacer()
+                            .frame(width: 148)
                     } else {
                         Text(message.messageText)
                             .foregroundColor(.clear)
                     }
-                    Text("10.00")
+                    Text(message.timeStamp.dateValue().timeString())
                         .foregroundStyle(.gray)
                         .font(.footnote)
                 }
             }
             .font(.subheadline)
-            .padding(message.isImage ? 1 : 12)
+            .padding(message.isImage || message.isVideo ? 1 : 12)
             .background(Color("Peach"))
             .clipShape(ChatBubble(isFromCurrentUser: isFromCurrentUser))
             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -48,7 +60,7 @@ struct ChatMessageCell: View {
         } else {
             HStack(spacing: 8) {
                 CircularProfileImageView(size: .xxsmall, user: User.MOCK_USER)
-                VStack(alignment: .leading, spacing: message.isImage ? 0 : -15) {
+                VStack(alignment: .leading, spacing: message.isImage || message.isVideo ? 0 : -15) {
                         if !message.isImage {
                             KFImage(URL(string: message.messageText))
                                 .resizable()
@@ -57,6 +69,14 @@ struct ChatMessageCell: View {
                                 .padding(.horizontal)
                                 .padding(.top, 6)
                                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                        } else if message.isVideo {
+                            if let videoUrl = URL(string: message.messageText) {
+                                VideoPlayer(player: AVPlayer(url: videoUrl))
+                                    .frame(width: 150, height: 150)
+                                    .padding(.horizontal)
+                                    .padding(.top, 6)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 15, height: 15)))
+                            }
                         } else {
                             Text(message.messageText)
                         }
@@ -64,18 +84,21 @@ struct ChatMessageCell: View {
                             if message.isImage {
                                 Spacer()
                                     .frame(width: 99)
+                            } else if message.isVideo {
+                                Spacer()
+                                    .frame(width: 148)
                             } else {
                                 Text(message.messageText)
                                     .foregroundColor(.clear)
                             }
-                            Text("10.00")
+                            Text(message.timeStamp.dateValue().timeString())
                                 .foregroundStyle(.gray)
                                 .font(.footnote)
-                                .padding(.trailing, message.isImage ? 5 : 0)
+                                .padding(.trailing, message.isImage || message.isVideo ? 5 : 0)
                         }
                     }
                     .font(.subheadline)
-                    .padding(message.isImage ? 1 : 12)
+                    .padding(message.isImage || message.isVideo ? 1 : 12)
                     .background(.white)
                     .clipShape(ChatBubble(isFromCurrentUser: isFromCurrentUser))
                     .frame(maxWidth: .infinity, alignment: .leading)

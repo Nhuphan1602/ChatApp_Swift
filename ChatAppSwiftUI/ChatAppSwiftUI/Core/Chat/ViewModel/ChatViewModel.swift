@@ -22,6 +22,12 @@ class ChatViewModel: ObservableObject {
         }
     }
     @Published var messageImage: Image = Image("")
+    @Published var showVideoPicker: Bool = false
+    @Published var selectedVideo: PhotosPickerItem? {
+        didSet {
+            Task { try await loadVideo() }
+        }
+    }
     private var service = ChatService()
     private var cancellables = Set<AnyCancellable>()
     
@@ -46,9 +52,20 @@ class ChatViewModel: ObservableObject {
         try await updateMessageImage(withUIImage: uiImage)
     }
     
+    private func loadVideo() async throws {
+        guard let item = selectedVideo else { return }
+        guard let data = try? await item.loadTransferable(type: Data.self) else { return }
+        try await updateMessageVideo(withData: data)
+    }
+    
     private func updateMessageImage(withUIImage uiImage: UIImage) async throws {
         guard let imageURL = try? await ImageUploader.uploadMessageImage(uiImage: uiImage) else { return }
         service.sendMessage(imageURL, chatPartner: chatPartner, isImage: true, isVideo: false, isAudio: false)
+    }
+    
+    private func updateMessageVideo(withData data: Data) async throws {
+        guard let videoUrl = try? await VideoUploader.uploadVideo(withData: data) else { return }
+        service.sendMessage(videoUrl, chatPartner: chatPartner, isImage: false, isVideo: true, isAudio: false)
     }
     
     func sendMessage(chatPartner: User, isImage: Bool, isVideo: Bool, isAudio: Bool) {

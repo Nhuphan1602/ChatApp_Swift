@@ -62,7 +62,7 @@ struct ChatView: View {
                         Image(systemName: "face.smiling")
                         Spacer()
                         Button {
-
+                            viewModel.showVideoPicker.toggle()
                         } label: {
                             Image(systemName: "paperclip")
                         }
@@ -98,6 +98,9 @@ struct ChatView: View {
         .photosPicker(isPresented: $viewModel.showPhotoPicker,
                       selection: $viewModel.selectedImage,
                       matching: .any(of: [.images, .not(.videos)]))
+        .photosPicker(isPresented: $viewModel.showVideoPicker,
+                      selection: $viewModel.selectedVideo,
+                      matching: .any(of: [.videos, .not(.images)]))
         .toolbar(viewModel.tabbarVisibility, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

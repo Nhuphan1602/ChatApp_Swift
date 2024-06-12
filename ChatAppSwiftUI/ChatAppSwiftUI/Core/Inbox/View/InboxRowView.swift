@@ -28,6 +28,11 @@ struct InboxRowView: View {
                         .foregroundStyle(.gray)
                         .lineLimit(2)
                         .frame(maxWidth: width - 100, alignment: .leading)
+                } else if message.isVideo {
+                    Text("Sent a video")
+                        .foregroundStyle(.gray)
+                        .lineLimit(2)
+                        .frame(maxWidth: width - 100, alignment: .leading)
                 } else {
                     Text(message.messageText)
                         .foregroundStyle(.gray)
@@ -38,7 +43,7 @@ struct InboxRowView: View {
             .font(.subheadline)
             
             HStack {
-                Text("Yesterday")
+                Text(message.timeStamp.dateValue().timeStampString())
                 Image(systemName: "chevron.right")
             }
             .font(.footnote)
