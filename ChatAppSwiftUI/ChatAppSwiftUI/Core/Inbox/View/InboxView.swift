@@ -17,10 +17,16 @@ struct InboxView: View {
                 ZStack(alignment: .bottomTrailing) {
                     List {
                         ForEach(viewModel.latestMessages) { message in
-                            NavigationLink {
-                                ChatView(selectedUser: User.MOCK_USER)
-                                    .navigationBarBackButtonHidden()
-                            } label: {
+                            ZStack {
+                                NavigationLink {
+                                    if let selectedUser = message.user {
+                                        ChatView(selectedUser: selectedUser)
+                                            .navigationBarBackButtonHidden()
+                                    }
+                                } label: {
+                                    EmptyView()
+                                        .opacity(0)
+                                }
                                 InboxRowView(width: proxy.size.width, message: message)
                             }
                         }
@@ -28,6 +34,7 @@ struct InboxView: View {
                     
                     Button(action: {
                         viewModel.showNewMessage.toggle()
+                        selectedUser = nil
                     }, label: {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(.darkGray))

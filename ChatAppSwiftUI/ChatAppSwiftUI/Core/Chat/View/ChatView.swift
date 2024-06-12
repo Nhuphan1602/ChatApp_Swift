@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ChatView: View {
     @StateObject private var viewModel: ChatViewModel
@@ -60,8 +61,16 @@ struct ChatView: View {
                     HStack {
                         Image(systemName: "face.smiling")
                         Spacer()
-                        Image(systemName: "paperclip")
-                        Image(systemName: "camera.fill")
+                        Button {
+
+                        } label: {
+                            Image(systemName: "paperclip")
+                        }
+                        Button {
+                            viewModel.showPhotoPicker.toggle()
+                        } label: {
+                            Image(systemName: "camera.fill")
+                        }
                     }
                     .padding(.horizontal)
                     .foregroundColor(.gray)
@@ -86,6 +95,9 @@ struct ChatView: View {
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .photosPicker(isPresented: $viewModel.showPhotoPicker,
+                      selection: $viewModel.selectedImage,
+                      matching: .any(of: [.images, .not(.videos)]))
         .toolbar(viewModel.tabbarVisibility, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

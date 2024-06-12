@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import PhotosUI
 
 class ChatViewModel: ObservableObject {
     @Published var messageText: String = ""
@@ -14,6 +15,13 @@ class ChatViewModel: ObservableObject {
     @Published var chatPartner: User
     @Published var messageGroups = [MessageGroup]()
     @Published var count: Int = 0
+    @Published var showPhotoPicker: Bool = false
+    @Published var selectedImage: PhotosPickerItem? {
+        didSet {
+            Task { try await loadImage(withItem:selectedImage) }
+        }
+    }
+    @Published var messageImage: Image = Image("")
     private var service = ChatService()
     private var cancellables = Set<AnyCancellable>()
     
@@ -28,6 +36,19 @@ class ChatViewModel: ObservableObject {
             self?.count = count
         }
         .store(in: &cancellables)
+    }
+    
+    private func loadImage(withItem item: PhotosPickerItem?) async throws {
+        guard let item = item else { return }
+        guard let data = try? await item.loadTransferable(type: Data.self) else { return }
+        guard let uiImage = UIImage(data: data) else { return }
+        self.messageImage = Image(uiImage: uiImage)
+        try await updateMessageImage(withUIImage: uiImage)
+    }
+    
+    private func updateMessageImage(withUIImage uiImage: UIImage) async throws {
+        guard let imageURL = try? await ImageUploader.uploadMessageImage(uiImage: uiImage) else { return }
+        service.sendMessage(imageURL, chatPartner: chatPartner, isImage: true, isVideo: false, isAudio: false)
     }
     
     func sendMessage(chatPartner: User, isImage: Bool, isVideo: Bool, isAudio: Bool) {

@@ -23,10 +23,17 @@ struct InboxRowView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(message.user?.fullName ?? "")
                     .fontWeight(.semibold)
-                Text(message.messageText)
-                    .foregroundStyle(.gray)
-                    .lineLimit(2)
-                    .frame(maxWidth: width - 100, alignment: .leading)
+                if message.isImage {
+                    Text("Sent a photo")
+                        .foregroundStyle(.gray)
+                        .lineLimit(2)
+                        .frame(maxWidth: width - 100, alignment: .leading)
+                } else {
+                    Text(message.messageText)
+                        .foregroundStyle(.gray)
+                        .lineLimit(2)
+                        .frame(maxWidth: width - 100, alignment: .leading)
+                }
             }
             .font(.subheadline)
             
