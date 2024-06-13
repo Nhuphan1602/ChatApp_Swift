@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import PhotosUI
+import AVFoundation
 
 class ChatViewModel: ObservableObject {
     @Published var messageText: String = ""
@@ -15,19 +16,28 @@ class ChatViewModel: ObservableObject {
     @Published var chatPartner: User
     @Published var messageGroups = [MessageGroup]()
     @Published var count: Int = 0
+    
+    // Image message
+    @Published var messageImage: Image = Image("")
     @Published var showPhotoPicker: Bool = false
     @Published var selectedImage: PhotosPickerItem? {
         didSet {
             Task { try await loadImage(withItem:selectedImage) }
         }
     }
-    @Published var messageImage: Image = Image("")
+    
+    // Video message
     @Published var showVideoPicker: Bool = false
     @Published var selectedVideo: PhotosPickerItem? {
         didSet {
             Task { try await loadVideo() }
         }
     }
+    
+    // Audio message
+    @Published var audioRecorder: AVAudioRecorder?
+    @Published var isRecording: Bool = false
+    @Published var recordingURL: URL?
     private var service = ChatService()
     private var cancellables = Set<AnyCancellable>()
     
@@ -58,14 +68,52 @@ class ChatViewModel: ObservableObject {
         try await updateMessageVideo(withData: data)
     }
     
+    func startRecording() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.record, mode: .default)
+            try audioSession.setActive(true)
+            let audioFileName = getDocumentDirectory().appendingPathComponent("recording.m4a")
+            let settings: [String: Any] = [
+                AVFormatIDKey: kAudioFormatMPEG4AAC,
+                AVSampleRateKey: 44100,
+                AVNumberOfChannelsKey: 2,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+            audioRecorder = try AVAudioRecorder(url: audioFileName, settings: settings)
+            audioRecorder?.record()
+            isRecording = true
+            recordingURL = audioFileName
+        } catch {
+            print("Error starting recording \(error.localizedDescription)")
+        }
+    }
+    
+    func getDocumentDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func finishRecording() async throws {
+        audioRecorder?.stop()
+        isRecording = false
+        try await updateMessageVoiceRecorded()
+    }
+    
     private func updateMessageImage(withUIImage uiImage: UIImage) async throws {
-        guard let imageURL = try? await ImageUploader.uploadMessageImage(uiImage: uiImage) else { return }
+        guard let imageURL = try? await StorageUploader.uploadMessageImage(uiImage: uiImage) else { return }
         service.sendMessage(imageURL, chatPartner: chatPartner, isImage: true, isVideo: false, isAudio: false)
     }
     
     private func updateMessageVideo(withData data: Data) async throws {
-        guard let videoUrl = try? await VideoUploader.uploadVideo(withData: data) else { return }
+        guard let videoUrl = try? await StorageUploader.uploadVideo(withData: data) else { return }
         service.sendMessage(videoUrl, chatPartner: chatPartner, isImage: false, isVideo: true, isAudio: false)
+    }
+    
+    private func updateMessageVoiceRecorded() async throws {
+        guard let recordingURL = recordingURL else { return }
+        guard let audioUrl = try? await StorageUploader.uploadAudio(withUrl: recordingURL) else { return }
+        service.sendMessage(audioUrl, chatPartner: chatPartner, isImage: false, isVideo: false, isAudio: true)
     }
     
     func sendMessage(chatPartner: User, isImage: Bool, isVideo: Bool, isAudio: Bool) {

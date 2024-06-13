@@ -13,9 +13,9 @@
 		B611C7972BFE04EB00478D14 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B611C7962BFE04EB00478D14 /* Message.swift */; };
 		B62A97BD2C170F7A004A17F0 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97BC2C170F79004A17F0 /* ChatService.swift */; };
 		B62A97BF2C183760004A17F0 /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97BE2C183760004A17F0 /* InboxService.swift */; };
-		B62A97C12C198F25004A17F0 /* VideoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C02C198F25004A17F0 /* VideoUploader.swift */; };
+		B62A97C32C1A0374004A17F0 /* StorageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C22C1A0374004A17F0 /* StorageUploader.swift */; };
+		B62A97C52C1AC291004A17F0 /* ChatMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C42C1AC290004A17F0 /* ChatMessageCellViewModel.swift */; };
 		B63D66552C14A7B100CC9FB4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B63D66542C14A7B100CC9FB4 /* Kingfisher */; };
-		B63D66572C14BFA800CC9FB4 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */; };
 		B63D665A2C15B3E700CC9FB4 /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D66592C15B3E700CC9FB4 /* NewMessageViewModel.swift */; };
 		B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51C2C0A15CE004779E5 /* SettingsView.swift */; };
 		B68FA51F2C0A1E9F004779E5 /* SettingsOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */; };
@@ -63,8 +63,8 @@
 		B611C7962BFE04EB00478D14 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B62A97BC2C170F79004A17F0 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		B62A97BE2C183760004A17F0 /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
-		B62A97C02C198F25004A17F0 /* VideoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploader.swift; sourceTree = "<group>"; };
-		B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		B62A97C22C1A0374004A17F0 /* StorageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUploader.swift; sourceTree = "<group>"; };
+		B62A97C42C1AC290004A17F0 /* ChatMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCellViewModel.swift; sourceTree = "<group>"; };
 		B63D66592C15B3E700CC9FB4 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		B68FA51C2C0A15CE004779E5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
@@ -130,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B63D66592C15B3E700CC9FB4 /* NewMessageViewModel.swift */,
+				B62A97C42C1AC290004A17F0 /* ChatMessageCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -264,10 +265,9 @@
 			children = (
 				B68FA53F2C0EEA9D004779E5 /* AuthService.swift */,
 				B68FA54B2C0F3100004779E5 /* UserService.swift */,
-				B63D66562C14BFA800CC9FB4 /* ImageUploader.swift */,
 				B62A97BC2C170F79004A17F0 /* ChatService.swift */,
 				B62A97BE2C183760004A17F0 /* InboxService.swift */,
-				B62A97C02C198F25004A17F0 /* VideoUploader.swift */,
+				B62A97C22C1A0374004A17F0 /* StorageUploader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -537,7 +537,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B62A97C12C198F25004A17F0 /* VideoUploader.swift in Sources */,
 				B68FFDE02BFB9FF3008E9B0B /* ChatViewModel.swift in Sources */,
 				B6CBDCB52BFE4460005F3F80 /* ProfileViewModel.swift in Sources */,
 				B611C7922BFDDCEA00478D14 /* ChatBubble.swift in Sources */,
@@ -547,8 +546,8 @@
 				B62A97BD2C170F7A004A17F0 /* ChatService.swift in Sources */,
 				B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */,
 				B68FA54C2C0F3100004779E5 /* UserService.swift in Sources */,
-				B63D66572C14BFA800CC9FB4 /* ImageUploader.swift in Sources */,
 				B68FA5282C0B0E72004779E5 /* LoginView.swift in Sources */,
+				B62A97C52C1AC291004A17F0 /* ChatMessageCellViewModel.swift in Sources */,
 				B611C7952BFE00C100478D14 /* Date.swift in Sources */,
 				B68FA5482C0F14DD004779E5 /* RootView.swift in Sources */,
 				B68FFDDA2BFB9448008E9B0B /* ContactView.swift in Sources */,
@@ -570,6 +569,7 @@
 				B68FFDD22BFA5CA8008E9B0B /* User.swift in Sources */,
 				B68FFDC52BF9086E008E9B0B /* MainTabBarView.swift in Sources */,
 				B68FFDD82BFB4D43008E9B0B /* InboxViewModel.swift in Sources */,
+				B62A97C32C1A0374004A17F0 /* StorageUploader.swift in Sources */,
 				B68FFDCD2BF9AABF008E9B0B /* InboxRowView.swift in Sources */,
 				B68FA5232C0A43D2004779E5 /* SettingsViewModel.swift in Sources */,
 				B68FA5402C0EEA9D004779E5 /* AuthService.swift in Sources */,

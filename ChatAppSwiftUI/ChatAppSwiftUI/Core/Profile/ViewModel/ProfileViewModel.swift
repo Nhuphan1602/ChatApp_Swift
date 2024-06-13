@@ -29,7 +29,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     private func updateProfileImage(uiImage: UIImage) async throws {
-        guard let imageURL = try await ImageUploader.uploadProfileImage(uiImage: uiImage) else { return }
+        guard let imageURL = try await StorageUploader.uploadProfileImage(uiImage: uiImage) else { return }
         try await UserService.shared.updateUserProfileImage(withImageURL: imageURL)
     }
 }

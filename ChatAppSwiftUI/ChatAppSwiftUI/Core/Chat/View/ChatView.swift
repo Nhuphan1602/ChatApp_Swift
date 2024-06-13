@@ -76,12 +76,27 @@ struct ChatView: View {
                     .foregroundColor(.gray)
                 }
                 Button(action: {
-                    viewModel.sendMessage(chatPartner: selectedUser, isImage: false, isVideo: false, isAudio: false)
+                    if viewModel.messageText != "" {
+                        viewModel.sendMessage(chatPartner: selectedUser, isImage: false, isVideo: false, isAudio: false)
+                    } else {
+                        if !viewModel.isRecording {
+                            viewModel.startRecording()
+                        } else {
+                            Task { try await viewModel.finishRecording() }
+                        }
+                    }
                 }, label: {
-                    Image(systemName: viewModel.messageText == "" ? "mic.circle.fill" : "play.circle.fill")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(Color(.darkGray))
+                    if !viewModel.isRecording {
+                        Image(systemName: viewModel.messageText == "" ? "mic.circle.fill" : "play.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(Color(.darkGray))
+                    } else {
+                        Image(systemName: "stop.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(Color(.darkGray))
+                    }
                 })
             }
             .padding()
