@@ -11,6 +11,7 @@ import PhotosUI
 import AVFoundation
 
 class ChatViewModel: ObservableObject {
+    @Published var isEmoji: Bool = false
     @Published var messageText: String = ""
     @Published var tabbarVisibility: Visibility = .hidden
     @Published var chatPartner: User

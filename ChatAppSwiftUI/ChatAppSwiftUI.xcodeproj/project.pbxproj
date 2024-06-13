@@ -15,6 +15,7 @@
 		B62A97BF2C183760004A17F0 /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97BE2C183760004A17F0 /* InboxService.swift */; };
 		B62A97C32C1A0374004A17F0 /* StorageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C22C1A0374004A17F0 /* StorageUploader.swift */; };
 		B62A97C52C1AC291004A17F0 /* ChatMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C42C1AC290004A17F0 /* ChatMessageCellViewModel.swift */; };
+		B62A97C72C1AFAF8004A17F0 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62A97C62C1AFAF8004A17F0 /* EmojiTextField.swift */; };
 		B63D66552C14A7B100CC9FB4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B63D66542C14A7B100CC9FB4 /* Kingfisher */; };
 		B63D665A2C15B3E700CC9FB4 /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63D66592C15B3E700CC9FB4 /* NewMessageViewModel.swift */; };
 		B68FA51D2C0A15CE004779E5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68FA51C2C0A15CE004779E5 /* SettingsView.swift */; };
@@ -65,6 +66,7 @@
 		B62A97BE2C183760004A17F0 /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
 		B62A97C22C1A0374004A17F0 /* StorageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUploader.swift; sourceTree = "<group>"; };
 		B62A97C42C1AC290004A17F0 /* ChatMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCellViewModel.swift; sourceTree = "<group>"; };
+		B62A97C62C1AFAF8004A17F0 /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		B63D66592C15B3E700CC9FB4 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		B68FA51C2C0A15CE004779E5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B68FA51E2C0A1E9F004779E5 /* SettingsOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOption.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			children = (
 				B68FFDCF2BF9D670008E9B0B /* CircularProfileImageView.swift */,
 				B68FA52C2C0B3575004779E5 /* FloatingField.swift */,
+				B62A97C62C1AFAF8004A17F0 /* EmojiTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				B6CBDCB52BFE4460005F3F80 /* ProfileViewModel.swift in Sources */,
 				B611C7922BFDDCEA00478D14 /* ChatBubble.swift in Sources */,
 				B63D665A2C15B3E700CC9FB4 /* NewMessageViewModel.swift in Sources */,
+				B62A97C72C1AFAF8004A17F0 /* EmojiTextField.swift in Sources */,
 				B68FFDD52BFB4D1A008E9B0B /* NewMessageView.swift in Sources */,
 				B611C7972BFE04EB00478D14 /* Message.swift in Sources */,
 				B62A97BD2C170F7A004A17F0 /* ChatService.swift in Sources */,

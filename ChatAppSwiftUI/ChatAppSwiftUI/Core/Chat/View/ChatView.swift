@@ -52,20 +52,28 @@ struct ChatView: View {
             
             HStack {
                 ZStack {
-                    TextField("Message...", text: $viewModel.messageText)
+                    EmojiTextField(text: $viewModel.messageText, isEmoji: $viewModel.isEmoji, placeholder: "Message...")
                         .padding(.vertical, 12)
                         .padding(.leading, 44)
                         .padding(.trailing, 60)
                         .background(Color(.systemGroupedBackground))
                         .clipShape(Capsule())
+                        .frame(height: 25)
                     HStack {
-                        Image(systemName: "face.smiling")
+                        Button {
+                            viewModel.isEmoji.toggle()
+                        } label: {
+                            Image(systemName: "face.smiling")
+                        }
+
                         Spacer()
+                        
                         Button {
                             viewModel.showVideoPicker.toggle()
                         } label: {
                             Image(systemName: "paperclip")
                         }
+                        
                         Button {
                             viewModel.showPhotoPicker.toggle()
                         } label: {
